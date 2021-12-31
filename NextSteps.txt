@@ -1,0 +1,5 @@
+Services, $http, Promises
+Creating directives and components
+Unit Testing (Jasmine) and Integration Testing (Protractor)
+Build Tools - Yeoman, Bower, Gulp
+Routing - UI Router, ngRouter

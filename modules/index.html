@@ -1,0 +1,15 @@
+<html ng-app="modulesApp">
+    <head>
+        <title>Modules App</title>
+        <script src="angular.js"></script>
+        <script src="app.js"></script>
+        <script src="myModule.js"></script>
+    </head>
+
+    <body>
+        <h1>Modules App</h1>
+        <div ng-controller="HelloCtrl as ctrl">
+            {{ctrl.helloMessage}}
+        </div>
+    </body>
+</html>
