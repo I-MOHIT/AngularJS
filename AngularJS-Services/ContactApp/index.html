@@ -6,12 +6,13 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <script src="angular.js"></script>
     <script src="app.js"></script>
+    <script src="appConfig.service.js"></script>
+    <script src="appname.service.js"></script>
+    <script src="contact.controller.js"></script>
+    <script src="contactdata.service.js"></script>
 </head>
 
 <body>
-    <div ng-controller="HeaderCtrl as head">
-        <h1>{{head.appTitle}}</h1>
-    </div>
     <div class="container" ng-controller="ContactCtrl as ctrl">
         <div class="row">
             <ul class="list-group">
@@ -46,10 +47,7 @@
             </div>
         </div>
     </div>
-    <div ng-controller="FooterCtrl as foot">
-        <h1>{{foot.appTitle}}</h1>
-        <p>{{foot.buildDate}}</p>
-    </div>
+    
 </body>
 
 </html>
