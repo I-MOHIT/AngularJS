@@ -2,6 +2,21 @@ var app = angular.module("ContactApp",[]);
 
 app.controller("ContactCtrl",ContactCtrl);
 
+app.controller("HeaderCtrl",HeaderCtrl);
+app.controller("FooterCtrl",FooterCtrl);
+
+//app.constant
+app.value("AppDataSvc",{
+  "name":"Contact App",
+  "author":"Mohit",
+  "company":"ABCD",
+  "version":1
+});
+
+app.value("LoggingSvc", function(){
+  console.log("Hello");
+});
+
 function ContactCtrl(){
     this.contacts = [
         {
@@ -235,4 +250,15 @@ function ContactCtrl(){
     this.selectContact = function(index){
         this.selectedContact=this.contacts[index];
     }
+
+}
+
+function HeaderCtrl(AppDataSvc,LoggingSvc){
+  this.appTitle = AppDataSvc.name;
+  LoggingSvc();
+}
+
+function FooterCtrl(AppDataSvc,LoggingSvc){
+  this.appTitle = AppDataSvc.name;
+  LoggingSvc();
 }
