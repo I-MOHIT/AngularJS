@@ -5,17 +5,29 @@ app.controller("ContactCtrl",ContactCtrl);
 app.controller("HeaderCtrl",HeaderCtrl);
 app.controller("FooterCtrl",FooterCtrl);
 
-//app.constant
-app.value("AppDataSvc",{
-  "name":"Contact App",
-  "author":"Mohit",
-  "company":"ABCD",
-  "version":1
-});
+app.value("AppNameSvc","Contact App");
 
-app.value("LoggingSvc", function(){
-  console.log("Hello");
-});
+function prepareAppConfig(AppNameSvc){
+  var value = {};
+
+  value.name = AppNameSvc;
+  value.author = "Mohit";
+  value.builtDate = new Date().toDateString();
+
+  return value;
+}
+
+// //app.constant
+// app.value("AppDataSvc",prepareAppConfig());
+
+// app.value("LoggingSvc", function(){
+//   console.log("Hello");
+// });
+
+
+//With factory service, Angular calls and executes the function and hence we can inject other services as dependencies
+//Value service does not allow dependency injection
+app.factory("AppDataFactorySvc", prepareAppConfig);
 
 function ContactCtrl(){
     this.contacts = [
@@ -253,12 +265,12 @@ function ContactCtrl(){
 
 }
 
-function HeaderCtrl(AppDataSvc,LoggingSvc){
-  this.appTitle = AppDataSvc.name;
-  LoggingSvc();
+function HeaderCtrl(AppDataFactorySvc){
+  this.appTitle = AppDataFactorySvc.name;
 }
 
-function FooterCtrl(AppDataSvc,LoggingSvc){
-  this.appTitle = AppDataSvc.name;
-  LoggingSvc();
+function FooterCtrl(AppDataFactorySvc){
+  this.appTitle = AppDataFactorySvc.name;
+  this.builtDate = AppDataFactorySvc.builtDate;
+  //LoggingSvc();
 }
