@@ -17,6 +17,19 @@ function prepareAppConfig(AppNameSvc){
   return value;
 }
 
+function AppConfig(AppNameSvc){
+  //var this = {};
+  this.name = AppNameSvc;
+  this.author = "Mohit";
+  this.builtDate = new Date().toDateString();
+
+
+  //return this;
+}
+
+//Calling a function in Constructor Mode in JS
+//new AppConfig()
+
 // //app.constant
 // app.value("AppDataSvc",prepareAppConfig());
 
@@ -27,7 +40,10 @@ function prepareAppConfig(AppNameSvc){
 
 //With factory service, Angular calls and executes the function and hence we can inject other services as dependencies
 //Value service does not allow dependency injection
-app.factory("AppDataFactorySvc", prepareAppConfig);
+app.factory("AppDataFactorySvc", prepareAppConfig); //prepareConfig()
+
+//The service service executes the function in Constructor mode hence the two commented lines in the AppConfig function get added
+app.service("AppDataServiceSvc", AppConfig);  //new AppConfig()
 
 function ContactCtrl(){
     this.contacts = [
@@ -265,12 +281,12 @@ function ContactCtrl(){
 
 }
 
-function HeaderCtrl(AppDataFactorySvc){
-  this.appTitle = AppDataFactorySvc.name;
+function HeaderCtrl(AppDataServiceSvc){
+  this.appTitle = AppDataServiceSvc.name;
 }
 
-function FooterCtrl(AppDataFactorySvc){
-  this.appTitle = AppDataFactorySvc.name;
-  this.builtDate = AppDataFactorySvc.builtDate;
+function FooterCtrl(AppDataServiceSvc){
+  this.appTitle = AppDataServiceSvc.name;
+  this.builtDate = AppDataServiceSvc.builtDate;
   //LoggingSvc();
 }
